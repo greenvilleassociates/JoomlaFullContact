@@ -90,9 +90,8 @@ $prefillData = array("email" => ".@.");
 	function addprofiledata($user_id, $profile_key, $profile_value) 
 	{
 	// database connection code
-
-	$con = mysqli_connect('localhost', 'root', '','db_contact');
-
+	$mysqli = new mysqli("localhost","u46wepy7oxttc","*Columbia1","dbdrxy58mkqzxh");
+	//echo $user_id, $profile_key, $profile_value;
 	// get the post records
 
 	$value1 = $user_id;
@@ -101,12 +100,42 @@ $prefillData = array("email" => ".@.");
 
 
 	// database insert SQL code
-	//ORIGINAL STRING $sql = "INSERT INTO `tbl_contact` (`Id`, `fldName`, `fldEmail`, `fldPhone`, `fldMessage`) VALUES ('0', '$txtName', '$txtEmail', '$txtPhone', '$txtMessage')";
-	$sql = "INSERT INTO `gaweb1_user_profiles` (`user_id`, `profile_key`, `profile_value`) VALUES ('$value1', '$value2', '$value3')";
+	$sql = "INSERT INTO `hwf98_user_profiles` (`user_id`, `profile_key`, `profile_value`) VALUES ('$value1', '$value2', '$value3')";
 
 	// insert in database 
-	$rs = mysqli_query($con, $sql);
+	$rs1 = mysqli_query($mysqli, $sql);
 	}
+
+	function createArticle($data)
+	{
+	$id = 3333;
+        return $id;
+        }
+	
+	function createpage($vFullname, $vPhone)
+	{
+	$vrand = rand();
+	echo $vrand;
+        $app = JFactory::getApplication('site');
+	
+	$article_data = array(
+	    'id' => 44,
+    	'catid' => 3, // any cat id will work here
+    	'title' => 'User Directory Page',
+    	'alias' => '$vFullName',
+    	'introtext' => 'This is a Default User Page on Account Creation',
+    	'fulltext' => '$vFullName' . " " . '$vPhone',
+    	'state' => 1, //if you want to keep the article published else 0
+    	'alias' => '$vFullname',
+    	'state'=>1,
+    	'language' => '*',
+    	'access' => 1,
+    	'metadata' => json_encode(array('author' => '', 'robots' => ''))
+	);
+
+	$article_id = createArticle($article_data);
+	return $article_id;
+	}		
 
 ///FUNCTION DECLARATIONS END
 
@@ -125,14 +154,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 		echo "Validation passed ok<br>";
  $emailtest = $data["email"];
  $passwordtest = $data["password"];
- $fullusernametest = $data["lastname"];
+ $formFirstname = $data["firstname"];
+ $formLastname = $data["lastname"];
+ $formMiddlename = $data["middlename"];
+ $fullusernametest = "$formFirstname" . " " . "$formMiddlename" . " " . "$formLastname";
+ //echo $fullusernametest;
+ //echo '<BR>';
+ $formAddress1 = $data["address1"];
+ $formAddress2 = $data["address2"];
+ $formCity = $data["city"];
+ $formState = $data["state"];
+ $formCountry = $data["country"];
+ $formZip = $data["zip"];
+ $formPhone = $data["telephone"];
+ $formCell = $data["cell"];
+
  //echo 'User registration...'.'<br/>';
 
+// STEP1 - CREATE JOOMLA USER
+// STEP2 - GET JOOMLA USERID FOR THE NEW USER
+// STEP3 - ADD ADDRESS INFORMATION TO JOOMLA PROFILE BASED ON FORM (WEIRD SCHEMA).
 
- addJoomlaUser($fullusernametest,$emailtest,$passwordtest,$emailtest);
+addJoomlaUser($fullusernametest,$emailtest,$passwordtest,$emailtest);
+// echo '<BR>'
+// echo $functionresult + 77;
+// echo '<BR>';
  $sqlresult = getdatabaseuserid($emailtest);
+ //$sqlresult = 28; 
  echo $sqlresult;
- 
+ addprofiledata($sqlresult, 'profile.address1', $formAddress1);
+ addprofiledata($sqlresult, 'profile.address2', $formAddress2);
+ addprofiledata($sqlresult, 'profile.city', $formCity);
+ addprofiledata($sqlresult, 'profile.region',$formState);
+ addprofiledata($sqlresult, 'profile.postal_code',$formZip);
+ addprofiledata($sqlresult, 'profile.phone',$formPhone);
+ addprofiledata($sqlresult, 'profile.country',$formCountry);
+ $Jpageid = createpage($fullusernametest, $formPhone);
+ echo $Jpageid;
  //echo '<br/>'.'User registration is completed'.'<br/>';
 
 
@@ -156,11 +214,13 @@ $form->bind($prefillData);
     method="post" name="sampleForm" id="adminForm" enctype="multipart/form-data">
 
 	<?php echo $form->renderField('firstname');  ?>
+	<?php echo $form->renderField('middlename');  ?>
 	<?php echo $form->renderField('lastname');  ?>
 	<?php echo $form->renderField('address1');  ?>
 	<?php echo $form->renderField('address2');  ?>
 	<?php echo $form->renderField('city');  ?>
 	<?php echo $form->renderField('state');  ?>
+	<?php echo $form->renderField('country');  ?>
 	<?php echo $form->renderField('zip');  ?>
 	<?php echo $form->renderField('message');  ?>
 	<?php echo $form->renderField('email');  ?>
