@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.1.0" method="upgrade">
+
+	<name>com_sample_form3</name>
+	<version>3.0.0</version>
+	<description>Glocation.Info Account Shell Creation Form3 </description>
+
+	<administration>
+	</administration>
+
+	<files folder="site">
+		<filename>sample_form3.php</filename>
+		<filename>sample_form3.xml</filename>
+	</files>
+</extension>

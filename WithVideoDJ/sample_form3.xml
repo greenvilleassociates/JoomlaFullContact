@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<field name="firstname"
+		type="text"
+		label="First Name"
+		required="true"
+		size="40"
+		class="inputbox"
+		/>
+	<field name="middlename"
+		type="text"
+		label="Middle Name"
+		required="true"
+		size="20"
+		class="inputbox"
+		/>
+
+	<field name="lastname"
+		type="text"
+		label="Last Name"
+		required="true"
+		size="40"
+		class="inputbox"
+		/>
+	<field name="address1"
+		type="text"
+		label="Address1"
+		required="true"
+		size="140"
+		class="inputbox"
+		/>
+	<field name="address2"
+		type="text"
+		label="Address2"
+		required="true"
+		size="140"
+		class="inputbox"
+		/>
+	<field name="city"
+		type="text"
+		label="City/Region"
+		required="true"
+		size="140"
+		class="inputbox"
+		/>
+	<field name="state"
+		type="text"
+		label="State"
+		required="true"
+		size="140"
+		class="inputbox"
+		/>
+	<field name="zip"
+		type="text"
+		label="Postal/ZipCode"
+		required="true"
+		size="140"
+		class="inputbox"
+		/>
+	<field name="country"
+		type="text"
+		label="Country"
+		required="true"
+		size="140"
+		class="inputbox"
+		/>
+	<field
+		name="message"
+		type="text"
+		label="Enter Message"
+		size="40"
+		class="inputbox"
+		required="true" />
+	<field name="email"
+		type="email"
+		label="Requested Email(@glocation.info)"
+		required="true"
+		size="40"
+		class="inputbox" />
+	<field name="password"
+		type="text"
+		label="Requested Password"
+		required="true"
+		size="40"
+		class="inputbox" />
+	<field name="telephone"
+		type="tel"
+		label="Enter telephone number"
+		required="true"
+		size="40"
+		class="inputbox"
+		validate="tel" />
+<field name="list1"
+		type="text"
+		label="Playlist1 Nickname"
+		required="true"
+		size="40"
+		class="inputbox" />
+	<field name="url1"
+		type="text"
+		label="Playlist URL(YoutubeEmbed Path)"
+		required="false"
+		size="100"
+		class="inputbox"
+		/>
+<field name="list2"
+		type="text"
+		label="Playlist2 Nickname"
+		required="false"
+		size="40"
+		class="inputbox" />
+	<field name="url2"
+		type="text"
+		label="Playlist URL(YoutubeEmbed Path)"
+		required="false"
+		size="100"
+		class="inputbox"
+		/>
+<field name="list3"
+		type="text"
+		label="Playlist3 Nickname"
+		required="false"
+		size="40"
+		class="inputbox" />
+	<field name="url3"
+		type="text"
+		label="Playlist URL(YoutubeEmbed Path)"
+		required="true"
+		size="100"
+		class="inputbox"
+		/>
+<field name="list4"
+		type="text"
+		label="Playlist4 Nickname"
+		required="true"
+		size="40"
+		class="inputbox" />
+	<field name="url4"
+		type="text"
+		label="Playlist URL(YoutubeEmbed Path)"
+		required="true"
+		size="100"
+		class="inputbox"
+		/>
+<field name="list5"
+		type="text"
+		label="Playlist5 Nickname"
+		required="true"
+		size="40"
+		class="inputbox" />
+	<field name="url5"
+		type="text"
+		label="Playlist URL(YoutubeEmbed Path)"
+		required="true"
+		size="100"
+		class="inputbox"
+		/>
+
+
+</form>
