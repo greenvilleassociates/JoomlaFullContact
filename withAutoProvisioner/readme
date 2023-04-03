@@ -1,0 +1,1 @@
+This includes the autoprovisioner which creates home directories and email accounts on the platform. It requires Joomla to be installed on a Virtualmin server. (VPS).
